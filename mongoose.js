@@ -169,3 +169,60 @@ var details = [{"firstName": "John",
 "yearGrad": "2019",
 "gradStream": "EEE"
 }]
+
+
+//connection to database
+
+mongoose.connect(url,async(err,connection)=>{
+  if(err) console.log(err);
+  else console.log("Connection successful")
+
+//creating collections
+
+  const employee = mongoose.model("employee",data);
+
+//inserting documents
+
+  const insert = employee.insertMany(details);
+  console.log(insert);
+
+//display all the documents
+
+
+  const docs = await employee.find({});
+  console.log(docs);
+
+// salary graterthan 30000
+
+  const salgt = {salary:{$gt:30000}}
+  const salgrater = await employee.find(salgt);
+  console.log(salgrater)
+
+//experience morethan 2
+
+
+  // const expgt = {overallExp:{$gt:2}};
+  // const experiencegt = await employee.find(expgt);
+  // console.log(experiencegt);
+
+//year graterthan 2015 and experience morethan 1
+
+  // const grdgt = {yearGrad:{$gt:2015},overallExp:{$gt:1}};
+  // const gebgt = await employee.find(grdgt);
+  // console.log(gebgt);
+
+//updating salary greaterthan 70000- 65000
+
+  const sal = {salary:{$gt:70000}}
+  const salupdat = {$set:{salary:65000}}
+  const salaupdate = await employee.updateMany(sal,salupdat);
+  console.log(salaupdate);
+
+//deleting document having lastcompany Y
+
+  const empdel = {lastCompany:"Y"};
+  const empdelete = await employee.deleteMany(empdel);
+  console.log(empdelete)
+})
+
+// const employee = mongoose.model("employee",dbSchema);

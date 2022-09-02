@@ -5,7 +5,7 @@
   "main": "client.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"nodemon client.js"
+    "start": "nodemon mongoose.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   "homepage": "https://github.com/supriya-5/mongo-ass1#readme",
   "dependencies": {
     "mongodb": "^4.9.0",
+    "mongoose": "^6.5.4",
     "nodemon": "^2.0.19"
   }
 }
